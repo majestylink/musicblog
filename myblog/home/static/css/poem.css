@@ -1,0 +1,39 @@
+.poem {
+	margin-bottom: 20px;
+	margin-top: 20px;
+}
+
+.poem_title {
+	font-weight: 700;
+	padding-top: 20px;
+}
+
+.author {
+	text-transform: uppercase;
+	font-size: 20px;
+	font-style: italic;
+}
+
+.poem_text {
+	color: #000;
+}
+
+.card-body a h3 {
+	font-weight: 600;
+	color: black;
+	font-size: 1.2rem;
+}
+
+.puthor {
+	text-transform: uppercase;
+	font-size: small;
+	color: #6a6a6f;
+	margin-top: -10px;
+}
+
+.read-more {
+	font-weight: 600;
+	color: black;
+	font-size: 1rem;
+	text-decoration: underline;
+}

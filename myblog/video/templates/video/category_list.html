@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %}{{ category }} Videos{% endblock %}
+
+{% block header %}
+<div class="container">
+    <h4>{{ category }} Videos</h4>
+
+    {% if group %}
+
+    <div class="content">
+        <ul>
+            {% for post in group %}
+                <li>
+                    <div class="item-content">
+                        <div class="row">
+                                <div class="item-thumbnail col-sm-12 col-lg-4">
+                                    <a href="{% url 'video:detail' post.slug %}">
+                                        <img src="{{ post.thumbnail.url }}" class="item-thumb">
+                                    </a>
+                                </div>
+                                <div class="item-title col-sm-12 col-lg-4">
+                                    <h6>{{post.title}}</h6>
+                                    <p>Director(s) - {{post.artist}}</p>
+                                    <a href="{% url 'video:detail' post.slug %}" class="btn btn-default" role="button">Play Now</a>
+                                </div>
+                            </div>
+                    </div>                    
+                </li>
+                <hr>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div id="pagination">
+        <span class="current">
+            Page {{ group.number }} of {{ group.paginator.num_pages }}.
+        </span>
+        <ul class="pagination">
+            {% if group.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" aria-label="Previous" href="?page={{ group.previous_page_number }}">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+            {% endif %}
+            
+            {% for x in group.paginator.page_range %}
+                <li class="page-item"><a class="page-link" href="?page={{ x }}">{{ x }}</a></li>
+            {% endfor %}
+
+            {% if group.has_next %}
+                <li class="page-item">
+                    <a class="page-link" aria-label="Next" href="?page={{ group.next_page_number }}">
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Next</span>
+                    </a>                
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+
+    {% else %}
+    <h5>No entries yet</h5>
+    {% endif %}
+    <div class="space"></div>
+</div>
+
+
+{% endblock %}

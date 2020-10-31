@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}Search results for "{{query}}"{% endblock %}
+
+{% block header %}
+<div class="container">
+	<h5>Search results for "{{query}}"</h5>
+	{% if music_list or video_list or poem_list %}
+		{% if music_list %}
+			<div class="blocktitle">Music</div>
+			{% for music in music_list %}
+					<div class="search">
+						<a href="{% url 'music:detail' music.slug %}">
+							<img src="{{ music.thumbnail.url }}" class="card-img-top" alt="...">
+						</a>
+						<div class="card-body">
+							<a href="{% url 'music:detail' music.slug %}" style="color: black">
+						  		<h5 class="card-title">{{ music.title }}</h5>
+						  	</a>
+						</div>
+						  <p class="card-text"><small class="text-muted">{{music.artist}}</small></p>
+					</div>
+					<hr>
+			{% endfor %}
+		{% endif %}
+		{% if video_list %}
+			<div class="blocktitle">Music</div>
+			{% for video in video_list %}
+					<div class="search">
+						<a href="{% url 'video:detail' video.slug %}">
+							<img src="{{ video.thumbnail.url }}" class="card-img-top" alt="...">
+						</a>
+						<div class="card-body">
+							<a href="{% url 'video:detail' video.slug %}" style="color: black">
+						  		<h5 class="card-title">{{ video.title }}</h5>
+						  	</a>
+						</div>
+						  <p class="card-text"><small class="text-muted">Video Category: {{video.category}}</small></p>
+					</div>
+				{% endfor %}
+		{% endif %}
+		{% if poem_list %}
+			<div class="blocktitle">Poem</div>
+			{% for poem in poem_list %}
+				<div class="search">
+					<a href="{% url 'poem:detail' poem.slug %}">
+						<img src="{{ poem.thumbnail.url }}" class="card-img-top" alt="...">
+					</a>
+					<div class="card-body">
+						<a href="{% url 'poem:detail' poem.slug %}" style="color: black">
+					  		<h5 class="card-title">{{ poem.title }}</h5>
+					  	</a>
+					</div>
+					  <p class="card-text"><small class="text-muted">{{poem.author}}</small></p>
+				</div>
+				<hr>
+			{% endfor %}
+		{% endif %}
+	{% else %}
+	<h6>No entries for "{{query}}"</h6>
+	<div class="space"></div>
+	{% endif %}
+</div>
+
+{% endblock %}

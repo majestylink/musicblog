@@ -1,0 +1,159 @@
+body {
+	background-color: #f7f3f3 !important;
+}
+
+.search {
+	max-width: 250px;
+}
+
+.space {
+	margin-top: 50px;
+	padding-bottom: 10px;
+}
+.secondbreak .card {
+	background-color: #f7f3f3 !important;
+}
+
+.firstbreak {
+	background-color: #fff;
+	padding-bottom: 25px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.thirdbreak .card {
+	background-color: #f0e9e9;
+}
+
+.thirdbreak {
+	background-color: #f0e9e9;
+	margin-top: 30px;
+	padding-bottom: 25px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.footer-img {
+	display: block;
+	width: 35px;
+	color: #fff;
+	text-align: center;
+	padding-bottom: 10px;
+}
+
+.gridcol h6, .gridcol p, .gridcol a {
+	color: #fff;
+}
+
+.gridcol hr {
+	background-color: #33b5e5 !important;
+}
+
+.gridrow {
+	padding-top: 30px;
+}
+
+.card-text-poem {
+	text-transform: uppercase;
+	color: #494949;
+	letter-spacing: 1.4px;
+	text-align: center;
+	font-weight: bold;
+	font-size: .875rem;
+}
+
+.card-title-poem {
+	text-align: center;
+	text-justify: none;
+	font-weight: bold;
+	font-size: revert;
+}
+
+.poemlink {
+	text-decoration: underline;
+	font-weight: 600;
+	text-align: center;
+	color: #260909;
+}
+
+.trend {
+	font-size: 150%;
+	text-align: center;
+	font-weight: 100;
+	margin-top: 1rem;
+}
+
+.card-title {
+	font-size: 1rem;
+}
+
+.card-img-top {
+	min-height: 230px;
+	max-height: 230px;
+	height: 100%;
+}
+
+.card-body {
+	padding: 0.3em;
+}
+
+.card {
+	border: 0px;
+}
+
+.card-event {
+	margin-bottom: 20px;
+}
+
+.card-text {
+	margin-top: -15px;
+	padding-left: 0.3em;
+}
+
+.explore-btn {
+	text-align: center;
+	margin-top: 5px;
+}
+
+.explore-btn a {
+	font-size: 14px;
+	height: 46px;
+	padding: 13px 23px;
+	background-color: #f50;
+	border-color: #f50;
+	color: #fff;
+	border-radius: 3px;
+}
+
+.card-deck {
+	margin-bottom: 30px;
+}
+
+label {
+	display: flex;
+}
+
+input {
+	border-radius: 4px;
+height: 35px;
+font-size: 14px;
+width: 100%;
+background:
+#fff;
+padding: 0 9px;
+font-size: 12px;
+outline: none;
+cursor: inherit;
+border: 1px solid
+#e5e5e5;
+}
+
+textarea {
+	overflow: auto;
+	resize: vertical;
+	border: 1px solid #e5e5e5;
+ 	border-radius: 4px;
+	width: 100%;
+	padding: 0 9px;
+	height: 200px;
+}

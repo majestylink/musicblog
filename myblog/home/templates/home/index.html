@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+
+{% block header %}
+
+<div class="container">
+	<div class="firstbreak">
+		<p class="trend">Hear what's trending for free</p>
+		{% if music_list %}
+			<div class="card-deck">
+				{% for music in music_list %}
+					<div class="card">
+						<a href="{% url 'music:detail' music.slug %}">
+							<img src="{{ music.thumbnail.url }}" class="card-img-top" alt="...">
+						</a>
+						<div class="card-body">
+							<a href="{% url 'music:detail' music.slug %}" style="color: black">
+						  		<h5 class="card-title">{{ music.title }}</h5>
+						  	</a>
+						</div>
+						  <p class="card-text"><small class="text-muted">{{music.artist}}</small></p>
+					</div>
+				{% endfor %}
+			</div>
+
+			<div class="explore-btn">
+				<a href="\music">Explore more</a>
+			</div>
+		{% endif %}
+	</div>
+
+	<div class="secondbreak">
+
+		<p class="trend">Keep up with your latest movies and music videos</p>
+
+		{% if video_list %}
+
+		<div class="card-deck">
+			{% for video in video_list %}
+				<div class="card">
+					<a href="{% url 'video:detail' video.slug %}">
+						<img src="{{ video.thumbnail.url }}" class="card-img-top" alt="...">
+					</a>
+					<div class="card-body">
+						<a href="{% url 'video:detail' video.slug %}" style="color: black">
+					  		<h5 class="card-title">{{ video.title }}</h5>
+					  	</a>
+					</div>
+					  <p class="card-text"><small class="text-muted">Video Category: {{video.category}}</small></p>
+				</div>
+			{% endfor %}
+		</div>
+
+		<div class="explore-btn">
+			<a href="\video">More</a>
+		</div>
+		{% endif %}
+	</div>
+
+	<div class="thirdbreak">
+		<p class="trend">Featured Poems</p>
+		{% if poem_list %}
+		<div class="row">		
+			{% for poem in poem_list %}
+				<div class="col-sm-6 col-lg-4">
+				  <div class="card mb-3" style="max-width: 540px;">
+					<div class="row no-gutters">
+						<div class="col-md-4">
+							<img src="{{ poem.thumbnail.url }}" class="card-img" alt="...">
+						</div>
+						<div class="col-md-1"></div>
+						<div class="col-md-7">
+							<div class="card-body">
+								<h2 class="card-title-poem">{{poem.title}}</h2>
+								<p class="card-text-poem">By{{poem.author}}</p>
+								<p>{{poem.text | truncatewords:20 | safe}}</p>
+								<a class="poemlink" href="{% url 'poem:detail' poem.slug %}">Read More</a>
+							</div>
+						</div>
+				    </div>
+				  </div>
+				</div>
+			{% endfor %}
+
+		</div>
+
+		<div class="explore-btn">
+			<a href="\poem">Browse all poems</a>
+		</div>
+		{% endif %}
+	</div>
+</div>
+
+{% endblock %}

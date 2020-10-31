@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}{{ vid.title }}{% endblock %}
+
+{% block header %}
+
+<div class="container">
+	<h4>{{ vid.title }}</h4>
+	<p class="puthor">by {{vid.artist}}</p>
+	<figure>
+	<video controls="" src="{{ vid.video_file.url }}">Your browser does not support the video tag.</video> 
+	<p>Here is a <a href="{{ vid.video_file.url }}">Link</a> to the video.</p>
+	</figure>
+
+	<div class="row">
+    <div class="col-sm-4 col-md-6">
+
+	<div class="comments">
+	            <h1 class="total-comments">{{comments.count}} Comment{{ comments.count| pluralize }}</h1>
+	            {% for comment in comments %}
+	                {% if comment.moderation %}
+	                    <p>{{ comment.text|safe }}</p>
+	                    <span class="gap"></span>
+	                    <span class="name">{{ comment.name }}</span>
+	                    <span class="date">({{comment.created_date}})</span>
+	                    <hr>
+	                {% endif %}
+	            {% endfor %}
+	</div>
+	<div class="add_comment">
+	            <h1 class="total-comments">Add a comment</h1>
+	            <form action="" method="post">
+	                    <fieldset class="module">
+	                        {% csrf_token %}
+	                        {{ comment_form.non_field_errors }}                
+	                        <div>
+	                            {{ commemnt_form.text.errors }}
+	                            <label for="{{ form.text.id_for_label }}">Name:</label>
+	                            {{ comment_form.name }}
+	                            <label for="{{ form.text.id_for_label }}">Comment:</label>
+	                            {{ comment_form.text }}
+	                        </div>
+	                    </fieldset>
+	                        <input class="default" type="submit" value="Submit">
+	                    </form>
+	</div>
+
+	</div>
+	</div>
+</div>
+{% endblock %}

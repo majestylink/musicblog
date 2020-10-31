@@ -1,0 +1,47 @@
+input.default {
+	font-size: 14px;
+	height: 46px;
+	padding: 13px 23px;
+	background-color: #f50;
+	border-color: #f50;
+	color: #fff;
+	border-radius: 3px;
+	margin-top: 10px;
+}
+
+.total-comments {
+	font-size: 18px;
+
+color: #473636;
+
+font-weight: bold;
+
+overflow: hidden;
+
+
+margin-bottom: 15px;
+
+width: 100%;
+
+padding-top: 20px;
+}
+
+.gap {
+	content: "";
+	width: 10px;
+	height: 10px;
+	display: inline-block;
+	background-color: #EA0253;
+	left: 0;
+	top: 49%;
+	z-index: 5;
+}
+
+.comments .name {
+	font-weight: 700;
+}
+
+.comments .date {
+	color: #595151;
+	font-weight: 400
+}

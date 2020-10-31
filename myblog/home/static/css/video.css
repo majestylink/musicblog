@@ -1,0 +1,50 @@
+
+
+.carou {
+	margin-top: 50px;
+}
+
+.blocktitle {
+	color: #008ee0;
+	text-transform: uppercase;
+font-weight: 600;
+letter-spacing: .05em;
+border-bottom: 1px solid
+#666;
+padding-bottom: 5px;
+margin: 15px 5px 5px 15px;
+font-size: 1.5em;
+}
+
+
+.item-thumbnail {
+	display: inline;
+}
+.item-thumb {
+	width: 100%;
+}
+
+.item-title a {
+	background-color: rgba(0,0,0,.1);
+	border-radius: 20px;
+	text-transform: uppercase;
+	font-weight: 600;
+}
+
+.item-title h6 {
+	font-weight: 600;
+    text-transform: uppercase;
+}
+
+.content ul {
+	list-style: none;
+	padding: 0;
+}
+
+.content li {
+	margin-bottom: 15px;
+}
+
+video {
+	width: 100%;
+}

@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}Music{% endblock %}
+
+{% block header %}
+
+<div class="container">
+    {% if page_obj %}
+    <div class="row">
+        
+        {% for song in page_obj %}
+
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card-event">
+                    <a href="{% url 'music:detail' song.slug %}">
+                        <img class="card-img-top" src="{{ song.thumbnail.url }}" alt="{{song.title}}">
+                    </a>
+                  <div class="card-body">
+                    <a href="{% url 'music:detail' song.slug %}">
+                        <h3 class="card-title">{{song.title}}</h3>
+                    </a>
+                    <p class="puthor">by {{song.artist}}</p>
+                  </div>
+                  <div class="explore-btn">
+                     <a href="{% url 'music:detail' song.slug %}">Listen</a>
+                  </div>
+                </div>
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+    <div id="pagination">
+            <span class="current">
+                Page {{ page_obj.number }} of {{ paginator.num_pages }}.
+            </span>
+            <ul class="pagination">
+                {% if page_obj.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" aria-label="Previous" href="?page={{ page_obj.previous_page_number }}">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+                {% endif %}
+                
+                {% for x in paginator.page_range %}
+                    <li class="page-item"><a class="page-link" href="?page={{ x }}">{{ x }}</a></li>
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" aria-label="Next" href="?page={{ page_obj.next_page_number }}">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+
+    {% else %}
+    <h4>No Entries yet</h4>
+    {% endif %}
+</div>
+{% endblock %}

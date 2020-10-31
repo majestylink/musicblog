@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}{{song.title}}{% endblock %}
+
+{% block header %}
+
+<div class="container">
+
+<div class="row">
+
+    <!-- Left Album Info -->
+    <div class="col-sm-6 col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <a href="{% url 'music:detail' song.slug %}">
+                    <img class="card-img-top" src="{{ song.thumbnail.url }}" alt="{{song.title}}">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-md-8">
+        <h4>{{ song.title }}</h4>
+        <p class="puthor">by {{song.artist}}</p>
+            <figure>
+                <figcaption>Listen to the Audio:</figcaption>
+                <audio controls="" src="{{ song.audio_file.url }}"></audio>
+            </figure>
+        <p>{{song.page_views}} hit{{ song.page_views| pluralize }}</p>
+            <p>Here is a <a href="{{ song.audio_file.url }}">Link</a> to the audio instead.</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-4 col-md-6">
+        <div class="comments">
+            <h1 class="total-comments">{{comments.count}} Comment{{ comments.count| pluralize }}</h1>
+            {% for comment in comments %}
+                {% if comment.moderation %}
+                    <p>{{ comment.text|safe }}</p>
+                    <span class="gap"></span>
+                    <span class="name">{{ comment.name }}</span>
+                    <span class="date">({{comment.created_date}})</span>
+                    <hr>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="add_comment">
+            <h1 class="total-comments">Add a comment</h1>
+            <form action="" method="post">
+                    <fieldset class="module">
+                        {% csrf_token %}
+                        {{ comment_form.non_field_errors }}                
+                        <div>
+                            {{ commemnt_form.text.errors }}
+                            <label for="{{ form.text.id_for_label }}">Name:</label>
+                            {{ comment_form.name }}
+                            <label for="{{ form.text.id_for_label }}">Comment:</label>
+                            {{ comment_form.text }}
+                        </div>
+                    </fieldset>
+                        <input class="default" type="submit" value="Submit">
+                    </form>
+        </div>
+    </div>       
+</div>
+</div>
+{% endblock %}

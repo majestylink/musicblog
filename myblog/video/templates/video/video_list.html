@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block title %}Videos{% endblock %}
+{% load static %}
+{% block header %}
+
+{% if latest_videos_list %}
+
+<div class="carou">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+
+
+      <div class="carousel-inner">
+        {% for vid in latest_videos_list %}
+            {% if forloop.first %}
+                <div class="carousel-item active">
+                  <a href="{% url 'video:detail' vid.slug %}">
+                    <img style="height: 500px;" class="d-block w-100" src="{{ vid.thumbnail.url }}" alt="First slide">
+                  </a>
+                </div>
+            {% else %}
+                <div class="carousel-item">
+                  <a href="{% url 'video:detail' vid.slug %}">
+                    <img style="height: 500px;" class="d-block w-100" src="{{ vid.thumbnail.url }}" alt="First slide">
+                  </a>
+                </div>
+            {% endif %}
+        {% endfor %}
+      </div>
+
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+</div>
+
+{% endif %}
+
+    <div class="blocktitle">Music Videos</div>
+    <div class="firstbreak">
+      {% if music_videos_list %}
+        <div class="card-deck">
+            {% for music in music_videos_list %}
+                <div class="card">
+                  <a href="{% url 'video:detail' music.slug %}">
+                    <img src="{{ music.thumbnail.url }}" class="card-img-top" alt="...">
+                  </a>
+                    <div class="card-body">
+                      <a href="{% url 'video:detail' music.slug %}">
+                        <h5 class="card-title">{{ music.title }}</h5>
+                      </a>
+                    </div>
+                      <p class="card-text"><small class="text-muted">{{music.artist}}</small></p>
+                </div>
+            {% endfor %}
+          
+        </div>
+
+        <div class="explore-btn">
+            <a href="\music_videos">Explore more</a>
+        </div>
+        {% else %}
+        <h4>No Entries yet</h4>
+        {% endif %}
+    </div>
+
+    <div class="blocktitle">Movies</div>
+    <div class="firstbreak">
+      {% if movies_videos_list %}
+        <div class="card-deck">
+            {% for music in movies_videos_list %}
+                <div class="card">
+                  <a href="{% url 'video:detail' music.slug %}">
+                    <img src="{{ music.thumbnail.url }}" class="card-img-top" alt="...">
+                  </a>
+                    <div class="card-body">
+                      <a href="{% url 'video:detail' music.slug %}">
+                        <h5 class="card-title">{{ music.title }}</h5>
+                      </a>
+                    </div>
+                      <p class="card-text"><small class="text-muted">{{music.artist}}</small></p>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="explore-btn">
+            <a href="\movies_videos">Explore more</a>
+        </div>
+        {% else %}
+        <h4>No Entries yet</h4>
+        {% endif %}
+    </div>
+
+
+{% endblock header %}
