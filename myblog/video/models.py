@@ -5,6 +5,16 @@ from django.utils.text import slugify
 from .managers import PostManager
 
 
+class VidTags(models.Model):
+	tag_name = models.CharField(max_length=50)
+
+	class Meta:
+		ordering = ['tag_name']
+
+	def __str__(self):
+		return self.tag_name
+
+
 class Video(models.Model):
 	
 	CATEGORY_CHOICES = (
@@ -18,6 +28,7 @@ class Video(models.Model):
 	slug = models.SlugField(default='', blank=True, unique=True)
 	thumbnail = models.ImageField(blank=False)
 	video_file = models.FileField(default='')
+	vid_tag = models.ManyToManyField(VidTags)
 	uploaded_date = models.DateTimeField(default=timezone.now)
 	objects = PostManager()
 

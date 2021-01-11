@@ -1,13 +1,13 @@
 from django.shortcuts import render
 import random
 from django.core.paginator import Paginator
-from . models import Video, Comment
+from .models import Video, Comment
 from .forms import CommentForm
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponseRedirect
 
-def videos_list(request):
 
+def videos_list(request):
     latest_videos_list = Video.objects.order_by('-uploaded_date')[:3]
     music_videos_list = Video.objects.get_category_posts('Music')[:5]
     movies_list = Video.objects.get_category_posts('Movies')[:5]
@@ -17,7 +17,6 @@ def videos_list(request):
         'music_videos_list': music_videos_list,
         'movies_list': movies_list,
     }
-
 
     return render(request, 'video/video_list.html', context)
 
@@ -31,9 +30,9 @@ def music_videos(request):
     group = paginator.get_page(page)
 
     context = {
-    'category_list': category_list,
-    'category': category,
-    'group': group,
+        'category_list': category_list,
+        'category': category,
+        'group': group,
     }
 
     return render(request, 'video/category_list.html', context)
@@ -48,15 +47,20 @@ def movies_videos(request):
     group = paginator.get_page(page)
 
     context = {
-    'category_list': category_list,
-    'category': category,
-    'group': group,
+        'category_list': category_list,
+        'category': category,
+        'group': group,
     }
 
     return render(request, 'video/category_list.html', context)
 
+
 def post_detail(request, slug):
-    random_posts = random.sample(list(Video.objects.all()), 2)
+    a = Video.objects.all().count()
+    if a > 2:
+        random_posts = random.sample(list(Video.objects.all()), 2)
+    else:
+        random_posts = random.choices(list(Video.objects.all()))
     vid = get_object_or_404(Video, slug=slug)
     comments = Comment.objects.filter(post=vid)
     is_liked = False

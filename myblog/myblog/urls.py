@@ -18,11 +18,14 @@ from django.urls import include, path
 from django.conf import settings
 from django.conf.urls.static import static
 
+# from django.contrib.auth import views as auth_views
+
 urlpatterns = [
     path('', include('home.urls')),
     path('admin/', admin.site.urls),
     path('poem/', include('poems.urls')),
     path('video/', include('video.urls')),
     path('music/', include('music.urls', namespace='music')),
-    path('ckeditor/', include('ckeditor_uploader.urls'))
+    path('accounts/', include('accounts.urls')),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

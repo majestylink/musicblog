@@ -30,6 +30,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 
 # Application definition
 
@@ -45,8 +48,11 @@ INSTALLED_APPS = [
     'poems',
     'video',
     'home',
+    'accounts',
+    'analytics',
     'ckeditor',
-    'ckeditor_uploader'
+    'ckeditor_uploader',
+    'user_visit',
 ]
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
@@ -59,6 +65,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'user_visit.middleware.UserVisitMiddleware',
 ]
 
 ROOT_URLCONF = 'myblog.urls'

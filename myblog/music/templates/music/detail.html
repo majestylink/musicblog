@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{%  load static %}
+
 {% block title %}{{song.title}}{% endblock %}
 
 {% block header %}
@@ -26,7 +28,20 @@
                 <audio controls="" src="{{ song.audio_file.url }}"></audio>
             </figure>
         <p>{{song.page_views}} hit{{ song.page_views| pluralize }}</p>
-            <p>Here is a <a href="{{ song.audio_file.url }}">Link</a> to the audio instead.</p>
+            <p>Here is a <a href="{{ song.audio_file.url }}">Link</a> to the audio instead.</p><hr />
+
+
+        <!-- <div class="fb-share">
+            <h6 class="text-uppercase font-weight-bold">Share song</h6>
+
+            <a href="#">
+                <img class="share-img" src="{% static 'img/fb.png' %}">
+            </a>
+
+            <a href="https://www.twitter.com/majestylink6">
+                <img class="share-img" src="{% static 'img/tt.png' %}">
+            </a>
+        </div> -->
     </div>
 </div>
 
@@ -47,19 +62,19 @@
         <div class="add_comment">
             <h1 class="total-comments">Add a comment</h1>
             <form action="" method="post">
-                    <fieldset class="module">
-                        {% csrf_token %}
-                        {{ comment_form.non_field_errors }}                
-                        <div>
-                            {{ commemnt_form.text.errors }}
-                            <label for="{{ form.text.id_for_label }}">Name:</label>
-                            {{ comment_form.name }}
-                            <label for="{{ form.text.id_for_label }}">Comment:</label>
-                            {{ comment_form.text }}
-                        </div>
-                    </fieldset>
-                        <input class="default" type="submit" value="Submit">
-                    </form>
+                <fieldset class="module">
+                    {% csrf_token %}
+                    {{ comment_form.non_field_errors }}
+                    <div>
+                        {{ commemnt_form.text.errors }}
+                        <label for="{{ form.text.id_for_label }}">Name:</label>
+                        {{ comment_form.name }}
+                        <label for="{{ form.text.id_for_label }}">Comment:</label>
+                        {{ comment_form.text }}
+                    </div>
+                </fieldset>
+                <input class="default" type="submit" value="Submit">
+            </form>
         </div>
     </div>       
 </div>

@@ -18,7 +18,7 @@
     <title>{% block title %}{% endblock title%}</title>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-success">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -47,6 +47,11 @@
           </div>
         </li>
       </ul>
+      {% if request.user.is_authenticated %}
+      <span class="btn btn-danger"style="font-size:18px; margin-right: 20px;"><a href="{% url 'logout' %}">{{user}} | Logout</a></span>
+      {% else %}
+      <span class="btn btn-danger"style="font-size:18px; margin-right: 20px;"><a href="{% url 'login' %}">Login</a></span>
+      {% endif %}
       <form class="form-inline my-2 my-lg-0" action="/s/">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
@@ -83,6 +88,9 @@
         </p>
         <p>
           <a href="\poem">Poems</a>
+        </p>
+        <p>
+          <a href="\music/upload">Upload Song</a>
         </p>
 
       </div>
@@ -163,7 +171,7 @@
 
   <!-- Copyright -->
   <div class="gridcol footer-copyright text-center py-3">
-    <p>Designed by Abdulfatai Lawal</p>
+<!--    <p>Designed by Abdulfatai Lawal</p>-->
     <p>© 2020 Copyright: Majesty Empire</p>
   </div>
   <!-- Copyright -->

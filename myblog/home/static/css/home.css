@@ -1,5 +1,6 @@
 body {
-	background-color: #f7f3f3 !important;
+	/*background-color: #f7f3f3 !important;*/
+	background-color: #DCDCDC !important;
 }
 
 .search {
@@ -35,6 +36,13 @@ body {
 
 .footer-img {
 	display: block;
+	width: 35px;
+	color: #fff;
+	text-align: center;
+	padding-bottom: 10px;
+}
+
+.share-img {
 	width: 35px;
 	color: #fff;
 	text-align: center;
@@ -93,6 +101,13 @@ body {
 	height: 100%;
 }
 
+.dez {
+    height: 100%;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+}
+
 .card-body {
 	padding: 0.3em;
 }
@@ -135,17 +150,17 @@ label {
 
 input {
 	border-radius: 4px;
-height: 35px;
-font-size: 14px;
-width: 100%;
-background:
-#fff;
-padding: 0 9px;
-font-size: 12px;
-outline: none;
-cursor: inherit;
-border: 1px solid
-#e5e5e5;
+    height: 35px;
+    font-size: 14px;
+    width: 100%;
+    background:
+    #fff;
+    padding: 0 9px;
+    font-size: 12px;
+    outline: none;
+    cursor: inherit;
+    border: 1px solid
+    #e5e5e5;
 }
 
 textarea {
@@ -156,4 +171,52 @@ textarea {
 	width: 100%;
 	padding: 0 9px;
 	height: 200px;
+}
+
+.main-article-title{
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.main-article-category,.author-name:hover,.sub-article-author:hover{
+    color: rgba(0.0.0.0.4);
+}
+
+.main-article-category:hover,.main-article-title,.author-name,.sub-article-title:hover,.sub-article-category:hover{
+    text-decoration: underline;
+}
+
+.recent-articles{
+    font-size:1.7em;
+    font-weight: bold;
+}
+
+.sub-article-title{
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.sub-article-category,.sub-article-date{
+    color: rgba(0.0.0.0.4);
+    font-size: 0.8em;
+}
+
+.sub-article-author{
+    text-decoration: underline;
+    font-size: 0.8em;
+}
+
+.sponsors{
+    /*width: 100%;*/
+    /*background-color: green;*/
+    font-weight: bold;
+    color: rgba(0.0.0.0.4);
+    text-align: center;
+}
+
+.myreg{
+    /* border: 3px solid #e5e5e5; */
+    margin: 50px;
+    border-bottom-right-radius: 20px;
+    box-shadow: 12px 12px 10px #2e6da4;
 }
